@@ -42,7 +42,9 @@ public class Player : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.Space) && this.IsOnGround)
         {
             playerRb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+            
             this.IsOnGround = false;
+
         }
     }
 

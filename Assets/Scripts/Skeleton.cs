@@ -15,4 +15,19 @@ public class Skeleton : Enemy
     {
         
     }
+    
+    //INHERITANCE FROM ENEMY
+    public override void DealDamage()
+    {
+
+    }
+
+    //INHERITANCE FROM ENEMY
+    public override void Walk()
+    {
+
+    }
+
+
+
 }
