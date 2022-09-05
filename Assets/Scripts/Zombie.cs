@@ -38,7 +38,7 @@ public class Zombie : Enemy
 
     private void ZombieAnimation()
     {
-        zombieAnimation.SetTrigger("Z_Walk");
+
     }
 
     private void OnCollisionEnter(Collision other) 
