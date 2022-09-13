@@ -9,7 +9,7 @@ public class Player : MonoBehaviour
     private Animator playerAnim;
     private CharacterController controller;
 
-    private float moveSpeed = 1.0f;
+    public float moveSpeed = 1.0f;
 
     private bool isOnGround = true;
     //ENCAPSULATION
@@ -41,34 +41,28 @@ public class Player : MonoBehaviour
         //ABSTRACTION
         Jump();
         Move();
-        
+        Debug.Log(IsOnGround);
+
     }
 
     private void Jump()
     {
-        if(Input.GetKeyDown(KeyCode.Space) && this.IsOnGround)
+        if(Input.GetKeyDown(KeyCode.Space) && IsOnGround)
         {
             playerRb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
-            this.IsOnGround = false;
-            Debug.Log(this.IsOnGround);
-
+            IsOnGround = false;
         }
         
     }
 
     private void Move()
     { 
-     if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D))
-         {
-            Vector3 move = new Vector3(Input.GetAxis("Horizontal"), 0, 0);
-            controller.Move(move * Time.deltaTime * moveSpeed);
 
-            if (move != Vector3.zero)
-            {
-                gameObject.transform.forward = move;
-               
-            }
-         }
+    if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D))
+        {
+            float horizontalInput = Input.GetAxis("Horizontal");
+            transform.Translate(Vector3.forward * horizontalInput * Time.deltaTime * moveSpeed);
+        }
 
     }
 
@@ -77,7 +71,7 @@ public class Player : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Ground"))
         {
-            this.IsOnGround = true;
+            IsOnGround = true;
         }
     }
 
