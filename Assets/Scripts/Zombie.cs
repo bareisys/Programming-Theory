@@ -41,14 +41,19 @@ public class Zombie : Enemy
 
     }
 
-    private void OnCollisionEnter(Collision other) 
+    private void OnCollisionEnter(Collision collision) 
     {
-        if (other.gameObject.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("Player"))
         {
-            zombieAnimation.SetTrigger("Attack");
-            
+            zombieAnimation.SetBool("isAttacking", true);
+            Debug.Log("Collided");
         }
     }
 
+    private void OnCollisionExit(Collision collision) 
+    {
+            zombieAnimation.SetBool("isAttacking", false);
+            Debug.Log("Not Colliding");
+    }
 
 }

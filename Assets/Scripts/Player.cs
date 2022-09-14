@@ -6,9 +6,6 @@ public class Player : MonoBehaviour
 {
     
     private Rigidbody playerRb;
-    private Animator playerAnim;
-    private CharacterController controller;
-
     public float moveSpeed = 1.0f;
 
     private bool isOnGround = true;
@@ -31,17 +28,16 @@ public class Player : MonoBehaviour
     void Start()
     {
         playerRb = GetComponent<Rigidbody>();
-        playerAnim = GetComponent<Animator>();
-        controller = gameObject.GetComponent<CharacterController>();
+
     }
 
     // Update is called once per frame
     void Update()
     {
+       
         //ABSTRACTION
         Jump();
         Move();
-        Debug.Log(IsOnGround);
 
     }
 
@@ -58,12 +54,13 @@ public class Player : MonoBehaviour
     private void Move()
     { 
 
-    if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D))
+        if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D))
         {
             float horizontalInput = Input.GetAxis("Horizontal");
             transform.Translate(Vector3.forward * horizontalInput * Time.deltaTime * moveSpeed);
         }
 
+            
     }
 
 
